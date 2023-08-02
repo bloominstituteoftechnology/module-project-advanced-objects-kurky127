@@ -49,8 +49,19 @@
         this.model = model
         this.altitude = 0
       }
-
+      up(meters) {
+        this.altitude += meters
+        return this.altitude
+      }
+      down(meters) {
+       if (this.altitude >= meters) {
+        this.altitude -= meters
+        return this.altitude
+      }
+      this.altitude = 0
+      return "CRASH!"
     }
+  }
 
     // 👉 CHALLENGE 3
     // 🧠 Build a Bulb class.
@@ -59,7 +70,22 @@
     // 🧠 The methods work as one might expect, changing the value of `isOn` to the appropriate Boolean.
     // 🧠 The methods also return one of these two strings: "You turned the bulb ON", or "You turned the bulb OFF".
     class Bulb {
-
+      isOn = false
+      turnOn () {
+        this.isOn = true
+        return "You turned the bulb ON"
+      }
+      turnOff () {
+        this.isOn = false
+        return "You turned the bulb OFF"
+      }
+      toggle () {
+        this.isOn = !this.isOn
+          if (this.isOn) {
+            return "You turned the bulb ON"
+          }
+          return "You turned the bulb OFF"
+      }
     }
 
     // 👉 CHALLENGE 4
@@ -77,8 +103,20 @@
     //   minusThree.count() // returns null
     //   minusThree.count() // returns null
     class CountDown {
-
+      constructor (num) {
+        this.currentNum = num
+      }
+      count () {
+        if (this.currentNum >= 1) {
+        return `${this.currentNum--}!`
+      } else if (this.currentNum === 0) {
+        this.currentNum--
+        return "Liftoff!"
+      } else {
+        return null
+      }
     }
+  }
 
     // 🧪 TESTS, do not work below this line
     // 🧪 TESTS, do not work below this line
